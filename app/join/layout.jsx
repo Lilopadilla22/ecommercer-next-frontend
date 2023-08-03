@@ -1,6 +1,8 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './layout.module.scss'
+import {Icon} from 'semantic-ui-react'
 
 export default function layout({ children }) {
     
@@ -11,7 +13,7 @@ export default function layout({ children }) {
             <Image src="/images/logo.png" width={100} height={60}/> 
           </Link>
           <Link href='/'>
-            x
+            X
           </Link>
         </div>
         <div className={styles.blockLeft}>{children}</div>
