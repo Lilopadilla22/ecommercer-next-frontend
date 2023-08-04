@@ -44,7 +44,9 @@ export function AuthProvider({children}) {
     }
 
     const logout = () => {
-        console.log('cerrar sesion')
+        tokenCtrl.removeToken()
+        setToken(null)
+        setUser(null)
     }
 
     const data ={
