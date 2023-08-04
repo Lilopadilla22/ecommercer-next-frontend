@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './sign-up.module.scss'
-import { RegisterForm } from '@/app/components/Auth'
+import { RegisterForm } from '@/app/components/Auth/RegisterForm/RegisterForm'
 
 
 export default function SignUp  ()  {

@@ -1,7 +1,7 @@
 'use client'
 import { Form } from 'semantic-ui-react'
 import { useFormik } from 'formik'
-import { Auth } from '../../../api/auth'
+import { Auth } from '@/app/api/auth'
 import { validationSchema, initialValues } from "./RegisterForm.form"
 
 const authCtrl = new Auth()
@@ -21,7 +21,6 @@ export function RegisterForm() {
             }
         }
     })
-
 
     return (
         <Form onSubmit={formik.handleSubmit}>
