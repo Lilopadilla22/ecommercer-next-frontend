@@ -12,6 +12,7 @@ export default function LoginForm() {
 
     const router = useRouter()
     const {login} = useAuth()
+    console.log(useAuth())
 
     const formik = useFormik({
         initialValues: initialValues(),
@@ -19,9 +20,10 @@ export default function LoginForm() {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                const response = authCtrl.login(formValue)
+                console.log(formValue, 'formValue')
+                const response = await authCtrl.login(formValue)
+                console.log(response, "HOLA")
                 login(response.jwt)
-                // router.push('/')
             } catch (error) {
                 console.error(error)
             }

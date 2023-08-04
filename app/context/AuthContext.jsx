@@ -1,7 +1,10 @@
 'use client'
 import { createContext, useEffect, useState } from 'react'
+import { Token, User } from '../api'
 
 export const AuthContext = createContext()
+const tokenCtrl = new Token()
+const userCtrl = new User()
 
 export function AuthProvider({children}) {
 
@@ -15,7 +18,9 @@ export function AuthProvider({children}) {
     
     const login = async (token) => {
         try {
-            setUser({email: 'demo6@yopmail.com'})
+            tokenCtrl.setToken(token)
+            const responseUser = await userCtrl.getMe()
+            setUser(responseUser)
             setToken(token)
             setLoading(false)
         } catch (error) {
