@@ -1,12 +1,15 @@
 'use client'
 import { Form } from 'semantic-ui-react'
 import { useFormik } from 'formik'
+import { useRouter } from "next/navigation"
 import { Auth } from '@/app/api/auth'
 import { validationSchema, initialValues } from "./RegisterForm.form"
 
 const authCtrl = new Auth()
 
 export function RegisterForm() {
+
+    const router = useRouter()
 
     const formik = useFormik({
         initialValues: initialValues(),
@@ -15,7 +18,7 @@ export function RegisterForm() {
         onSubmit: async (formValue) => {
             try {
                 await authCtrl.register(formValue)
-                console.log('TODO ESTA OK')
+                router.push('/join/sign-in')
             } catch (error) {
                 console.error(error)
             }
