@@ -4,7 +4,7 @@ import styles from './layout.module.scss'
 import {Icon, Image} from 'semantic-ui-react'
 
 export default function layout({ children }) {
-    
+
     return (
       <div className={styles.container}>
         <div className={styles.topBar}>
