@@ -1,6 +1,4 @@
-import { ENV } from '../utils'
-
-
+import { ENV } from '../utils/constants'
 export class Auth {
 
     async register( data ) {

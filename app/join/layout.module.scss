@@ -18,6 +18,9 @@
     padding: 15px;
 
     > a {
+        > img {
+            height: 30px;
+          }
         > i {
             font-size: 26px;
             columns: $danger;

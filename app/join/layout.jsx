@@ -13,7 +13,7 @@ export default function layout({ children }) {
             <Image src="/images/logo.png" width={100} height={60}/> 
           </Link>
           <Link href='/'>
-            X
+            <Icon name="close" />
           </Link>
         </div>
         <div className={styles.blockLeft}>{children}</div>
