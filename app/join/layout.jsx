@@ -1,9 +1,16 @@
 'use client'
 import Link from 'next/link'
 import styles from './layout.module.scss'
+import { useRouter } from "next/navigation"
+import { useAuth } from '../hook'
 import {Icon, Image} from 'semantic-ui-react'
 
 export default function layout({ children }) {
+
+  const {user} = useAuth()
+  const router = useRouter()
+
+  if(user) router.push('/')
 
     return (
       <div className={styles.container}>
