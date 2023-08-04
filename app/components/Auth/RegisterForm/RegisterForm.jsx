@@ -1,7 +1,10 @@
 'use client'
-import {Form} from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import { useFormik } from 'formik'
-import {validationSchema, initialValue} from "./RegisterForm.form"
+import { Auth } from '../../../api'
+import { validationSchema, initialValue } from "./RegisterForm.form"
+
+const authCtrl = new Auth()
 
 export function RegisterForm() {
 
@@ -9,21 +12,25 @@ export function RegisterForm() {
         initialValues: initialValue(),
         validationSchema: validationSchema(),
         validateOnChange: false,
-        onSubmit: (formValue) => {
-            console.log('formulario enviado')
-            console.log({formValue})
+        onSubmit: async (formValue) => {
+            try {
+                await authCtrl.register(formValue)
+                console.log('TODO ESTA OK')
+            } catch (error) {
+                console.error(error)
+            }
         }
     })
 
 
     return (
         <Form onSubmit={formik.handleSubmit}>
-            <Form.Group widths="ed">
+            <Form.Group widths="equal">
                 <Form.Input name="email" type="text" placeholder="Correo Electronico" value={formik.values.email} onChange={formik.handleChange} error={formik.errors.email}/>
                 <Form.Input name="username" type="text" placeholder="Nombre de Usuario" value={formik.values.username} onChange={formik.handleChange} error={formik.errors.username}/>
             </Form.Group>
 
-            <Form.Group widths="ed">
+            <Form.Group widths="equal">
                 <Form.Input name="name" type="text" placeholder="Nombre y apellido" value={formik.values.name} onChange={formik.handleChange} error={formik.errors.name}/>
                 <Form.Input name="password" type="password" placeholder="contraseña" value={formik.values.password} onChange={formik.handleChange} error={formik.errors.password}/>
             </Form.Group>
