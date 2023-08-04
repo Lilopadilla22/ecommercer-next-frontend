@@ -5,12 +5,13 @@
     }
   
     .field {
+      width: 100%;
       .ui.input {
         input {
           border: 2px solid $border-primary;
           background-color: $background-secondary;
           color: $text-primary;
-          padding: 15px 43px;
+          padding: 15px 13px;
           border-radius: 6px;
   
           &:hover,
