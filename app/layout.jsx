@@ -1,3 +1,4 @@
+import { AuthProvider } from './context/AuthContext';
 import 'semantic-ui-css/semantic.min.css'
 import { Inter } from 'next/font/google'
 import "@/app/scss/global.scss";
@@ -13,7 +14,9 @@ export default function RootLayout({children}) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <AuthProvider>
+          <div>{children}</div>
+        </AuthProvider>
       </body>
     </html>
   )

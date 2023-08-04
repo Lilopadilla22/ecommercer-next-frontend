@@ -3,6 +3,7 @@ import { Form } from 'semantic-ui-react'
 import { useFormik } from 'formik'
 import { useRouter } from "next/navigation"
 import { Auth } from "@/app/api/auth"
+import { useAuth } from '@/app/hook'
 import { initialValues, validationSchema } from './LoginForm.Form'
 
 const authCtrl = new Auth()
@@ -10,6 +11,7 @@ const authCtrl = new Auth()
 export default function LoginForm() {
 
     const router = useRouter()
+    const {accessToken} = useAuth()
 
     const formik = useFormik({
         initialValues: initialValues(),
