@@ -2,9 +2,10 @@
 import {Button, Icon, Label} from 'semantic-ui-react'
 import { useRouter} from 'next/navigation'
 import {useAuth} from '@/app/hook'
+import classNames from 'classnames'
 import styles from './Account.module.scss'
 
-const total = 5
+const total = 22
 
 export default function Account() {
 
@@ -25,18 +26,9 @@ export default function Account() {
             {total > 0 && <Label circular>{total}</Label>}
         </Button>
 
-        {
-        !user ? (
-          <Button icon>
-            <Icon name='user outline' onClick={goToLogin}/>
-          </Button>
-        ) : (
-          <Button icon className={styles.user}>
-            <Icon name='user outline' onClick={goToAccount}/>
-          </Button>
-        )
-
-        }
+        <Button icon className={classNames({[styles.user]: user})}>
+          <Icon name='user outline' onClick={user ? goToAccount : goToAccount}/>
+        </Button>
     </div>
   )
 }
