@@ -5,14 +5,16 @@ import { Platform } from '@/app/api'
 import { map } from 'lodash'
 import styles from './Menu.module.scss'
 import Link from 'next/link'
-
+import classNames from 'classnames'
 
 const platformCtrl = new Platform
 
 export default function Menu({isOpenSearch}) {
 
     const [platforms, setPlatforms] = useState(null)
-    console.log(platforms)
+    const [showSearch, setShowSearch] = useState(false)
+
+    const openCloseSearch = () => setShowSearch((prevState) => !prevState)
 
     useEffect(() => {
         (async () =>{
@@ -25,8 +27,6 @@ export default function Menu({isOpenSearch}) {
         })()
     }, [])
     
-
-
     return (
         <div className={styles.platforms}>
             {map(platforms, (platform) => (
@@ -35,6 +35,15 @@ export default function Menu({isOpenSearch}) {
                     {platform.attributes.title}
                 </Link>
             ))}
+
+            <button className={styles.search} onClick={openCloseSearch}>
+                <Icon name='search'/>
+            </button>
+
+            <div className={classNames(styles.inputContainer, {[styles.active]: showSearch })}>
+                <input id='search-game' placeholder='Busca tu juego' className={styles.input} focus={true} />
+                <Icon name='close' className={styles.closeInput} onClick={openCloseSearch} />
+            </div>
         </div>
     )
 }
