@@ -4,8 +4,7 @@ import { Container } from 'semantic-ui-react'
 import classNames from 'classnames'
 import styles from './layout.module.scss'
 import TopBar from '../components/layout/TopBar/TopBar'
-
-
+import Footer from '../components/layout/Footer/Footer'
 
 export default function Layout(props) {
 
@@ -23,7 +22,7 @@ export default function Layout(props) {
                 </div>
             </Container>
 
-            {/* FOOTER */}
+            <Footer/>
             
         </>
     ) 
