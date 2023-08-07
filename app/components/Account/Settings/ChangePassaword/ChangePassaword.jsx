@@ -1,15 +1,16 @@
 import { Form } from 'semantic-ui-react'
-import styles from './ChangeEmailForm.module.scss'
+import styles from './ChangePassaword..module.scss'
 import { useFormik } from 'formik'
-import { initialValues, validateSchema } from './ChangeEmailForm.form'
+import { initialValues, validateSchema } from './ChangePassword.form'
 import { User } from '@/app/api'
 import { useAuth } from '@/app/hook'
 
+
 const userCtrl = new User()
 
-export default function ChangeEmailForm() {
+export default function ChangePassaword() {
 
-  const {user, updateUser} = useAuth()
+  const {user, logout} = useAuth()
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -17,31 +18,30 @@ export default function ChangeEmailForm() {
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        await userCtrl.updateMe(user.id, {email: formValue.email})
-        updateUser('email', formValue.email)
-        //formik.handleReset()
+        await userCtrl.updateMe(user.id, {password: formValue.password})
+        logout()
       } catch (error) {
-        console.error(error)
+        throw error
       }
     }
   })
 
   return (
     <Form className={styles.form} onSubmit={formik.handleSubmit}>
-      <label>Cambiar correo electronico</label>
+      <label>Cambiar Contraseña</label>
       <Form.Input
-        name='email'
-        placeholder='Nuevo correo electronico'
-        value={formik.values.email}
+        name='password'
+        placeholder='Nueva Contraseña'
+        value={formik.values.password}
         onChange={formik.handleChange}
-        error={formik.errors.email}
+        error={formik.errors.password}
       />
       <Form.Input
-        name='repeatEmail'
-        placeholder='Repetir correo electronico'
-        value={formik.values.repeatEmail}
+        name='repeatPassword'
+        placeholder='Repetir Contraseña'
+        value={formik.values.repeatPassword}
         onChange={formik.handleChange}
-        error={formik.errors.repeatEmail}
+        error={formik.errors.repeatPassword}
       />
       <Form.Button type='submit' loading={formik.isSubmitting}>
         Enviar

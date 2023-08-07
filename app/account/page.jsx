@@ -46,6 +46,7 @@ export default function Account() {
     },
     {
       menuItem: {
+        key: 20,
         icon: 'setting',
         content: 'Ajustes'
       },
@@ -54,6 +55,7 @@ export default function Account() {
           <Settings.ChangeNameForm/>
           <div className={styles.containerForms}>
             <Settings.ChangeEmailForm/>
+            <Settings.ChangePassaword/>
           </div>
           <Separator height={80}/>
         </Tab.Pane>
@@ -61,7 +63,8 @@ export default function Account() {
     },
     {
       menuItem: {
-        icon: 'logout',
+        key: 21,
+        icon: 'log out',
         content: "",
         onClick: logout
       }
