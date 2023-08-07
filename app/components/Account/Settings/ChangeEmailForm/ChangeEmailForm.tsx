@@ -2,8 +2,8 @@ import { Form } from 'semantic-ui-react'
 import styles from './ChangeEmailForm.module.scss'
 import { useFormik } from 'formik'
 import { initialValues, validateSchema } from './ChangeEmailForm.form'
-import { User } from '@/app/api'
-import { useAuth } from '@/app/hook'
+import { User } from '../../../../api/user'
+import { useAuth } from '../../../../hook/useAuth'
 
 const userCtrl = new User()
 

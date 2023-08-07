@@ -1,4 +1,4 @@
-import { ENV } from '@/app/utils/constants'
+import { ENV } from '../utils/constants'
 import { authFetch } from '../utils'
 
 export class User {

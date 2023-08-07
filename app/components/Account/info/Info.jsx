@@ -1,5 +1,5 @@
 'use client'
-import { useAuth } from '@/app/hook'
+import { useAuth } from '../../../hook/useAuth'
 import styles from './Info.module.scss'
 import { Button, Icon } from 'semantic-ui-react'
 import { DateTime } from 'luxon'

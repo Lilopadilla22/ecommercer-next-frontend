@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './sign-in.module.scss'
-import LoginForm from '@/app/components/Auth/LoginForm/LoginForm'
+import {LoginForm} from '../../components/Auth/LoginForm'
 
 export default function Page  ()  {
   return (

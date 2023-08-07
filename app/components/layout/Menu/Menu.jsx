@@ -1,7 +1,7 @@
 'use client'
 import {Image, Icon, Input} from 'semantic-ui-react'
 import { useEffect, useState } from 'react'
-import { Platform } from '@/app/api'
+import { Platform } from '../../../api/platform'
 import { map } from 'lodash'
 import styles from './Menu.module.scss'
 import Link from 'next/link'

@@ -2,7 +2,7 @@
 import { Form } from 'semantic-ui-react'
 import { useFormik } from 'formik'
 import { useRouter } from "next/navigation"
-import { Auth } from '@/app/api/auth'
+import { Auth } from '../../../api/auth'
 import { validationSchema, initialValues } from "./RegisterForm.form"
 
 const authCtrl = new Auth()

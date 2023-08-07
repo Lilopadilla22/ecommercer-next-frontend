@@ -3,8 +3,8 @@ import { Form } from 'semantic-ui-react'
 import styles from './ChangeNameForm.module.scss'
 import { useFormik } from 'formik'
 import { initialValues, validateSchema } from './ChangeNameForm.Form'
-import { useAuth } from '@/app/hook'
-import { User } from '@/app/api'
+import { useAuth } from '../../../../hook/useAuth'
+import { User } from '../../../../api/user'
 
 
 const userCtrl = new User()

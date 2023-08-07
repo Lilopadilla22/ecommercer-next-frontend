@@ -1,7 +1,7 @@
 'use client'
 import {Button, Icon, Label} from 'semantic-ui-react'
 import { useRouter} from 'next/navigation'
-import {useAuth} from '@/app/hook'
+import {useAuth} from '../../../hook/useAuth'
 import classNames from 'classnames'
 import styles from './Account.module.scss'
 
