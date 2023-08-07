@@ -7,22 +7,30 @@ import { useAuth } from "../../../../hook"
 
 const addresCtrl = new Address()
 
-export default function AddressForm({onClose, onReload}) {
+export default function AddressForm({onClose, onReload, addressId, address}) {
 
     const { user } = useAuth()
     const userId = user.id
 
     const formik = useFormik({
-        initialValues: initialValues(),
+        initialValues: initialValues(address),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                await addresCtrl.create(formValue, userId)
+
+                if(addressId) {
+                    console.log('actualizar direccion')
+                } else {
+                    await addresCtrl.create(formValue, userId)
+                }
+            
                 onReload()
                 onClose()
             } catch (error) {
+
                 console.error(error)
+                
             }
         }
     })

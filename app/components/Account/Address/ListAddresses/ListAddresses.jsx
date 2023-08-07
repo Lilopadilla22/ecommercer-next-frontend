@@ -34,6 +34,7 @@ export default function ListAddresses({reload, onReload}) {
             key={address.id} 
             addressId={address.id} 
             address={address.attributes}
+            onReload={onReload}
           />
         ))
       }
