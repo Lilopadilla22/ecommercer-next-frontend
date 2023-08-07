@@ -20,7 +20,7 @@ export default function AddressForm({onClose, onReload, addressId, address}) {
             try {
 
                 if(addressId) {
-                    console.log('actualizar direccion')
+                    await addresCtrl.update(formValue, addressId)
                 } else {
                     await addresCtrl.create(formValue, userId)
                 }
@@ -30,7 +30,7 @@ export default function AddressForm({onClose, onReload, addressId, address}) {
             } catch (error) {
 
                 console.error(error)
-                
+
             }
         }
     })
