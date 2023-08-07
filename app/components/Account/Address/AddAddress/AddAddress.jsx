@@ -10,8 +10,6 @@ export default function AddAddress() {
   const [show, setShow] = useState(true)
   
   const onOpenClose = () => setShow((prevState) => !prevState)
-  console.log(show , onOpenClose)
-  
 
   return (
     <>
