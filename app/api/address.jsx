@@ -7,11 +7,10 @@ export class Address {
             const url= `${ENV.API_URL}/${ENV.ENDPOINTS.ADDRESS}`
             const params = {
                 method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                }
+                headers: { "Content-Type": "application/json" },
+                body:  JSON.stringify({data: {...data, user: userId }})
             }
-            body:  JSON.stringify({data: {...data, user: userId }})
+            
 
             const response = await authFetch(url, params)
 
@@ -25,5 +24,7 @@ export class Address {
             throw error
         }
     }
+
+    // async getAll()
 }
 
