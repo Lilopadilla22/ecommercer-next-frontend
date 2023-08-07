@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Game } from '../../../../api'
 import { Container, Image } from 'semantic-ui-react'
 import styles from './BannerLastGamePublished.module.scss'
+import { ENV } from '../../../../utils'
 
 const gameCtrl = new Game()
 
@@ -27,7 +28,7 @@ export default function BannerLastGamePublished() {
   
   return (
     <div className={styles.container}>
-      <Image src={wallpaper.data.attributes.url}/>
+      <Image src={`${ENV.SERVER_HOST}${wallpaper.data.attributes.url}`}/>
 
     </div>
   )
