@@ -5,7 +5,7 @@ import { Tab } from 'semantic-ui-react'
 import styles from './account.module.scss'
 import { useAuth } from '../hook'
 import { useRouter } from 'next/navigation'
-import { Settings } from '../components/Account'
+import { Settings, Address } from '../components/Account'
 import Separator from '../components/Shared/Separator/Separator'
 
 export default function Account() {
@@ -40,7 +40,8 @@ export default function Account() {
       menuItem: 'Direcciones',
       render: () => (
         <Tab.Pane attached={false}>
-            <p>Mis direcciones</p>
+            <Address.AddAddress/>
+            <Separator height={80}/>
         </Tab.Pane>
       )
     },
