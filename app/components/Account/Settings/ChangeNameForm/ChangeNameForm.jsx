@@ -4,6 +4,10 @@ import styles from './ChangeNameForm.module.scss'
 import { useFormik } from 'formik'
 import { initialValues, validateSchema } from './ChangeNameForm.Form'
 import { useAuth } from '@/app/hook'
+import { User } from '@/app/api'
+
+
+const userCtrl = new User()
 
 export default function ChangeNameForm() {
 
@@ -15,8 +19,7 @@ export default function ChangeNameForm() {
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        console.log('FORM Enviado')
-        console.log(formValue)
+        await userCtrl.updateMe(user.id, formValue)
       } catch (error) {
         console.error(error)
       }
