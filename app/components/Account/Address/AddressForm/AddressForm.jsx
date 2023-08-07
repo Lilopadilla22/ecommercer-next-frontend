@@ -7,7 +7,7 @@ import { useAuth } from "../../../../hook"
 
 const addresCtrl = new Address()
 
-export default function AddressForm({onClose}) {
+export default function AddressForm({onClose, onReload}) {
 
     const { user } = useAuth()
     const userId = user.id
@@ -19,6 +19,7 @@ export default function AddressForm({onClose}) {
         onSubmit: async (formValue) => {
             try {
                 await addresCtrl.create(formValue, userId)
+                onReload()
                 onClose()
             } catch (error) {
                 console.error(error)

@@ -1,4 +1,4 @@
-'use clien'
+'use client'
 import { Button, Icon } from 'semantic-ui-react'
 import styles from './Address.module.scss'
 

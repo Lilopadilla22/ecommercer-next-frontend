@@ -7,8 +7,11 @@ import { useAuth } from '../hook'
 import { useRouter } from 'next/navigation'
 import { Settings, Address } from '../components/Account'
 import Separator from '../components/Shared/Separator/Separator'
+import { useState } from 'react'
 
 export default function Account() {
+
+  const [reload, setReload] = useState(false)
 
   const {logout, user} = useAuth()
 
@@ -18,6 +21,8 @@ export default function Account() {
     router.push("/join/sign-in")
     return null
   } 
+
+  const onReload = () => setReload((prevState) => !prevState)
 
   const panes = [
     {
@@ -40,8 +45,8 @@ export default function Account() {
       menuItem: 'Direcciones',
       render: () => (
         <Tab.Pane attached={false}>
-            <Address.AddAddress/>
-            <Address.ListAddresses/>
+            <Address.AddAddress onReload={onReload}/>
+            <Address.ListAddresses reload={reload} onReload={onReload} />
             <Separator height={80}/>
         </Tab.Pane>
       )

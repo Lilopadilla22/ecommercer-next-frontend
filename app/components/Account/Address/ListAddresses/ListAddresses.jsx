@@ -7,7 +7,7 @@ import styles from './ListAddresses.module.scss'
 
 const addresCtrl = new AddressCtrl()
 
-export default function ListAddresses() {
+export default function ListAddresses({reload, onReload}) {
 
   const [addresses, setAddresses] = useState(null)
 
@@ -22,7 +22,7 @@ export default function ListAddresses() {
         console.log(error)
       }
     })()
-  }, [])
+  }, [reload])
 
   if(!addresses) return null  
 
