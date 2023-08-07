@@ -7,7 +7,7 @@ import AddressForm from "../AddressForm/AddressForm"
 
 export default function AddAddress({onReload}) {
 
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   
   const onOpenClose = () => setShow((prevState) => !prevState)
 
