@@ -1,0 +1,19 @@
+.content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    >div {
+        &:nth-child(1) , &:nth-child(2){
+            width: 50%;
+            margin: 0 !important;
+        }
+        &:nth-child(2){
+            margin-left: 10px !important;
+        }
+
+        &:last-of-type {
+            margin-left: 15px !important;
+        }
+    }
+}

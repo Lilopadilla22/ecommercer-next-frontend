@@ -5,6 +5,7 @@ import { Tab } from 'semantic-ui-react'
 import styles from './account.module.scss'
 import { useAuth } from '../hook'
 import { useRouter } from 'next/navigation'
+import { Settings } from '../components/Account'
 
 export default function Account() {
 
@@ -49,7 +50,7 @@ export default function Account() {
       },
       render: () => (
         <Tab.Pane attached={false}>
-            <p>Configuraciones</p>
+          <Settings.ChangeNameForm/>
         </Tab.Pane>
       )
     },
