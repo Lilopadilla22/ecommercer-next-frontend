@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Address } from '../../../../api'
+import { Address as AddressCtrl } from '../../../../api'
 import { useAuth } from '../../../../hook'
+import { map } from 'lodash'
+import Address  from '../ListAddresses/Address/Address'
 import styles from './ListAddresses.module.scss'
 
-const addresCtrl = new Address()
+const addresCtrl = new AddressCtrl()
 
 export default function ListAddresses() {
 
@@ -26,7 +28,17 @@ export default function ListAddresses() {
 
   return (
     <div className={styles.addresses}>
+      {
+        map(addresses, (address) => (
+          <Address 
+            key={address.id} 
+            addressId={address.id} 
+            address={address.attributes}
+          />
+        ))
+      }
 
+      
     </div>
   )
 }

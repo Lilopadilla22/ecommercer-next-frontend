@@ -1,0 +1,33 @@
+@import '~/app/scss/index.scss';
+
+.address {
+    background-color: $background-quaternary;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    >div {
+        display: flex
+    }
+}
+
+.title {
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.addressInfo{
+    color: $text-secondary;
+    font-size: 16px;
+}
+
+.actions {
+    >button {
+        padding: 12px !important;
+        margin-left: 10px !important;
+    }
+}
