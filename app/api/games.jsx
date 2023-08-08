@@ -18,7 +18,7 @@ export class Game{
            return result
             
         } catch (error) {
-            
+            throw error
         }
     }
 
@@ -43,7 +43,26 @@ export class Game{
         } catch (error) {
             throw error
         }
-        
-        
+    }
+
+    async getGamesByPatformSlug(slug, page) {
+        try {
+            const filters = `filters[platform][slug][$eq]=${slug}`
+            const pagination = `pagination[page]=${page}&pagination[pageSize]=30`
+            const populate = 'populate=*'
+            const urlParams = `${filters}&${pagination}&${populate}`
+
+            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.GAME}?${urlParams}`
+
+            const response = await fetch(url)
+            const result = await response.json()
+
+           if(response.status !== 200) throw error
+
+           return result
+
+        } catch (error) {
+            throw error
+        }
     }
 }

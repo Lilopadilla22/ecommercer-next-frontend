@@ -20,4 +20,24 @@ export class Platform {
             throw error
         }
     }
+
+    async getByslug (slug) {
+        try {
+            const filter = `filters[slug][$eq]=${slug}`
+           
+            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.PLATFORM}?${filter}`
+
+            const response = await fetch(url)
+            const result = await response.json()
+            
+           if(response.status !== 200) throw error
+
+           return result.data[0]
+            
+        } catch (error) {
+            throw error
+            
+        }
+    }
+
 }

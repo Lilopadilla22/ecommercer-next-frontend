@@ -8,9 +8,6 @@ import { ENV, fn } from '../../../utils'
 
 export default function GridGames({games}) {
 
-    console.log(games)
-
-
   return (
     <div className={styles.gridGames}>
       {
