@@ -6,11 +6,11 @@ import { data } from './BarTrust.data'
 
 export function BarTrust() {
   return (
-    <div className={styles.BarTrust}>
+    <div className={styles.barTrust}>
       <Container className={styles.content}>
         {map(data, (item) => (
             <div className={styles.block}>
-                <Icon name={item.name}/>
+                <Icon name={item.icon}/>
                 <div>
                     <h5>
                         {item.title}

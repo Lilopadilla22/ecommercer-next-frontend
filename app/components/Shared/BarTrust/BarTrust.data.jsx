@@ -1,7 +1,7 @@
 
 export const data = [
     {
-        icon: 'truch',
+        icon: 'truck',
         title: 'Súper Rapido',
         description: 'Entrega en 24/48 horas'
     },
