@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Game } from '../../../../api'
+import GridGames from '../../../Shared/GridGames/GridGames'
 
 
 const gameCtrl = new Game()
-const limit = 9
-const platformId = null
 
-export default function LatestGames() {
+
+export default function LatestGames({title, limit = 9, platformId=null}) {
 
     const [games, setGames] = useState(null)
 
@@ -27,7 +27,8 @@ export default function LatestGames() {
     
     return (
         <div>
-            Soy el Latest Game
+            <h2>{title}</h2>
+            <GridGames games={games}/> 
         </div>
     )
 }
