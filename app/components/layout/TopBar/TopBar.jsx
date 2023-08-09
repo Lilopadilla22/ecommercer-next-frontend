@@ -5,7 +5,7 @@ import styles from './TopBar.module.scss'
 import Account from '../Account/Account'
 import Menu from '../Menu/Menu'
 
-export default function TopBar({isOpenSearch}) {
+export function TopBar({isOpenSearch}) {
 
   return (
     <div className={styles.topBar}>

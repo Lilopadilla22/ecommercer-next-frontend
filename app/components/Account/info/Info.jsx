@@ -4,7 +4,7 @@ import styles from './Info.module.scss'
 import { Button, Icon } from 'semantic-ui-react'
 import { DateTime } from 'luxon'
 
-export default function Info() {
+export function Info() {
 
     const {user} = useAuth()
 

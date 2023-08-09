@@ -1,12 +1,11 @@
 'use client'
-import Layout from '../layout/layout'
-import Info from '../components/Account/info/Info'
+import { Layout } from '../layout/layout'
 import { Tab } from 'semantic-ui-react'
 import styles from './account.module.scss'
 import { useAuth } from '../hook'
 import { useRouter } from 'next/navigation'
-import { Settings, Address } from '../components/Account'
-import Separator from '../components/Shared/Separator/Separator'
+import { Settings, Address, Info } from '../components/Account'
+import { Separator } from '../components/Shared'
 import { useState } from 'react'
 
 export default function Account() {

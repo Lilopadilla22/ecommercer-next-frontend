@@ -3,7 +3,7 @@ import Link from "next/link"
 import {Container, Image, Button} from 'semantic-ui-react'
 import styles from './Footer.module.scss'
 
-export default function Footer() {
+export function Footer() {
     return (
         <div className={styles.footer}>
             <Container>

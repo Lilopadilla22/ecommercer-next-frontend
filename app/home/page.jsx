@@ -1,9 +1,7 @@
 'use client'
-import Layout from "../layout/layout";
+import { Layout } from "../layout/layout";
 import {HomeComponent} from '../components/Home/Banner/index'
-import Separator from "../components/Shared/Separator/Separator";
-import { BarTrust } from '../components/Shared/BarTrust/BarTrust'
-import { BannerAd } from '../components/Shared/BannerAd/BannerAd'
+import {Separator, BarTrust, BannerAd} from "../components/Shared";
 import { Container } from "semantic-ui-react";
 
 const platFormId = {
@@ -44,7 +42,7 @@ export default function Home() {
       <Separator height={50}/>
 
       <Container>
-        <HomeComponent.Latest title='Xbox' limit={3} platformId={platFormId.xbox}/>
+        <HomeComponent.Latest title='Nintendo' limit={3} platformId={platFormId.nintendo}/>
       </Container>
 
       <Separator height={100}/>

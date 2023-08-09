@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { ENV, fn } from '../../../utils'
 
 
-export default function GridGames({games}) {
+export function GridGames({games}) {
 
   return (
     <div className={styles.gridGames}>

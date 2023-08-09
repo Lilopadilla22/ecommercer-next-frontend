@@ -1,8 +1,8 @@
 
 import { Platform, Game } from '../../api'
-import GridGames from '../../components/Shared/GridGames/GridGames';
-import Layout from '../../layout/layout';
-import Separator from '../../components/Shared/Separator/Separator';
+import { NoResult, GridGames, Separator } from '../../components/Shared'
+import { Layout } from '../../layout/layout';
+
 
 
 export default async function PlatformPage(props) {
@@ -19,14 +19,12 @@ export default async function PlatformPage(props) {
         <Separator height={50}/>
           <h2>{responsePlatform.attributes.title}</h2>
           {
-            responseGames.data ? (
+            !responseGames.data ? (
               <>
                 <GridGames games={responseGames.data}/>
               </>
             ) : (
-              <p>
-                No resultant
-              </p>
+              <NoResult />
             )
           }
           <Separator height={100}/>
