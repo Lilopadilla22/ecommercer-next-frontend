@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className={styles.columns}>
                     <div>
                         <Link href='/'>
-                            <Image src='images/logo.png' alt='gamming' />
+                            <Image src='/images/logo.png' alt='gamming' />
                         </Link>
                     </div>
 

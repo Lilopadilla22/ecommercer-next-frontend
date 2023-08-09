@@ -1,45 +1,53 @@
-'use client'
+
+import { Platform, Game } from '../../api'
+import GridGames from '../../components/Shared/GridGames/GridGames';
+import Layout from '../../layout/layout';
+import Separator from '../../components/Shared/Separator/Separator';
 
 
-import { Platform } from '../../api/platform'
-import { Game } from '../../api/games'
-import { size } from 'lodash'
+export default async function PlatformPage(props) {
 
-export default function PlatformPage(props) {
-
-    console.log(props)
+    const { params: { platform }, searchParams: { page = 1 } } = props;
+    const platformCtrl = new Platform();
+    const responsePlatform = await platformCtrl.getBySlug(platform);
+    const gameCtrl = new Game();
+    const responseGames = await gameCtrl.getGamesByPlatformSlug(platform, page);
 
   return (
-    <div>
-        <h2>SOY LOS JUEGOS EN PLATAFORMA</h2>
-    </div>
+    <Layout relative>
+      <div>
+        <Separator height={50}/>
+          <h2>{responsePlatform.attributes.title}</h2>
+          {
+            responseGames.data ? (
+              <>
+                <GridGames games={responseGames.data}/>
+              </>
+            ) : (
+              <p>
+                No resultado
+              </p>
+            )
+          }
+          <Separator height={100}/>
+      </div>
+    </Layout>
   )
 }
 
 
-
-export async function getServerSideProps(context) {
-
-    const { params: { platform }, searchParams: { page = 1 } } = context;
-
-    console.log(page, 'hey')
-
-    console.log(context, 'CONTEXTO')
-  
-    const platformCtrl = new Platform();
-    const responsePlatform = await platformCtrl.getBySlug(platform);
-
-    console.log('responseP:', responsePlatform)
-  
-    const gameCtrl = new Game();
-    const responseGames = await gameCtrl.getGamesByPlatformSlug(platform, searchParams);
-  
-    return {
-      props: {
-        platform: responsePlatform,
-        games: responseGames.data,
-        pagination: responseGames.meta.pagination,
-      }
-    };
-}
-
+// {
+//   id: 2,
+//   attributes: {
+//     title: 'Xbox',
+//     slug: 'xbox',
+//     order: 2,
+//     createdAt: '2023-08-02T19:20:56.192Z',
+//     updatedAt: '2023-08-02T19:20:57.270Z',
+//     publishedAt: '2023-08-02T19:20:57.267Z'
+//   }
+// } PLATFORM
+// {
+//   data: [ { id: 3, attributes: [Object] } ],
+//   meta: { pagination: { page: 1, pageSize: 30, pageCount: 1, total: 1 } }
+// } GAMES responseGames.meta.pagination

@@ -21,7 +21,7 @@ export class Platform {
         }
     }
 
-    async getByslug (slug) {
+    async getBySlug (slug) {
         try {
             const filter = `filters[slug][$eq]=${slug}`
            

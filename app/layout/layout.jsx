@@ -23,7 +23,6 @@ export default function Layout(props) {
             </Container>
 
             <Footer/>
-            
         </>
     ) 
 }

@@ -45,7 +45,7 @@ export class Game{
         }
     }
 
-    async getGamesByPatformSlug(slug, page) {
+    async getGamesByPlatformSlug(slug, page) {
         try {
             const filters = `filters[platform][slug][$eq]=${slug}`
             const pagination = `pagination[page]=${page}&pagination[pageSize]=30`
