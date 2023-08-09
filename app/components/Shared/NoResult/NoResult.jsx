@@ -1,9 +1,9 @@
 import styles from './NoResult.module.scss'
 
-export function NoResult() {
+export function NoResult({text}) {
   return (
-    <div>
-      Soy el no resultado
+    <div className={styles.noResult}>
+      <p>{text}</p>
     </div>
   )
 }

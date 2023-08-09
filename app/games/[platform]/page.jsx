@@ -19,12 +19,12 @@ export default async function PlatformPage(props) {
         <Separator height={50}/>
           <h2>{responsePlatform.attributes.title}</h2>
           {
-            !responseGames.data ? (
+            responseGames.data ? (
               <>
                 <GridGames games={responseGames.data}/>
               </>
             ) : (
-              <NoResult />
+              <NoResult text={`La categoria ${responsePlatform.attributes.title} aun no tiene productos`} />
             )
           }
           <Separator height={100}/>
