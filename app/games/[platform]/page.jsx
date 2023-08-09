@@ -15,7 +15,7 @@ export default async function PlatformPage(props) {
 
   return (
     <Layout relative>
-      <div>
+      <div style={{paddingLeft: 50, paddingRight: 50}}>
         <Separator height={50}/>
           <h2>{responsePlatform.attributes.title}</h2>
           {
@@ -25,7 +25,7 @@ export default async function PlatformPage(props) {
               </>
             ) : (
               <p>
-                No resultado
+                No resultant
               </p>
             )
           }

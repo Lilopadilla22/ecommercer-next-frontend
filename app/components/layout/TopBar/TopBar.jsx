@@ -10,8 +10,8 @@ export default function TopBar({isOpenSearch}) {
   return (
     <div className={styles.topBar}>
       <div className={styles.left}>
-        <Link href="./">
-          <Image src='/images/logo.png' alt= 'gamming'/>
+        <Link href="/">
+          <Image src='/images/logo.png' alt='gaming'/>
         </Link>
       </div>
 
