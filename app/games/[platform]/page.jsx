@@ -1,9 +1,7 @@
 
 import { Platform, Game } from '../../api'
-import { NoResult, GridGames, Separator } from '../../components/Shared'
+import { NoResult, GridGames, Separator, Pagination } from '../../components/Shared'
 import { Layout } from '../../layout/layout';
-
-
 
 export default async function PlatformPage(props) {
 
@@ -22,6 +20,11 @@ export default async function PlatformPage(props) {
             responseGames.data ? (
               <>
                 <GridGames games={responseGames.data}/>
+                <Separator height={30}/>
+                <Pagination 
+                  currentPage={responseGames.meta.pagination.page}
+                  totalPages={responseGames.meta.pagination.pageCount}
+                />
               </>
             ) : (
               <NoResult text={`La categoria ${responsePlatform.attributes.title} aun no tiene productos`} />
