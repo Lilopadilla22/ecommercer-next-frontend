@@ -2,7 +2,7 @@
 // import React, { useEffect } from 'react'
 import { Layout } from '../layout/layout'
 import { Game } from '../api'
-import { GridGames, NoResult, Pagination, Separator } from '../components/Shared'
+import { GridGames, NoResult, Pagination, Separator, Search } from '../components/Shared'
 
 export default async function SearchPage(props) {
 
@@ -11,31 +11,33 @@ export default async function SearchPage(props) {
   const gameCtrl = new Game
   const responseGames = await gameCtrl.searchGames(s, page); 
 
-    // useEffect(() => {
-    //  document.getElementById('search-games').focus()
-    // }, []) 
-
   return (
-    <Layout relative isOpenSearch>
-      <div style={{paddingLeft: 40, paddingRight: 40}}>
-        <Separator height={50}/>
-        <h2>Buscando: {s}</h2>
-       {
-          responseGames.data 
-          ? 
-          (
-            <>
-              <GridGames games={responseGames.data}/>
-              <Separator height={30}/>
-              <Pagination  currentPage={responseGames.meta.pagination.page} totalPages={responseGames.meta.pagination.pageCount}/>
-            </>
-          ) 
-          : 
-            <NoResult text ='No se han encontrado resultado'/>
-        } 
-        <Separator height={100}/>
-      </div>
-    </Layout>
+    <>
+      <Search/>
+      <Layout relative isOpenSearch>
+        <div style={{paddingLeft: 40, paddingRight: 40}}>
+          <Separator height={50}/>
+          <h2>Buscando: {s}</h2>
+        {
+            responseGames.data 
+            ? 
+            (
+              <>
+                <GridGames games={responseGames.data}/>
+                <Separator height={30}/>
+                <Pagination  currentPage={responseGames.meta.pagination.page} totalPages={responseGames.meta.pagination.pageCount}/>
+              </>
+            ) 
+            : 
+            (
+              <NoResult text ='No se han encontrado resultado'/>
+            )
+          } 
+          <Separator height={100}/>
+        </div>
+      </Layout>
+    </>
+
   )
 }
 
