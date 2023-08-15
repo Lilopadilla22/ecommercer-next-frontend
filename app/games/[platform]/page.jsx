@@ -1,4 +1,3 @@
-
 import { Platform, Game } from '../../api'
 import { NoResult, GridGames, Separator, Pagination } from '../../components/Shared'
 import { Layout } from '../../layout/layout';
@@ -6,10 +5,13 @@ import { Layout } from '../../layout/layout';
 export default async function PlatformPage(props) {
 
     const { params: { platform }, searchParams: { page = 1 } } = props;
+
     const platformCtrl = new Platform();
     const responsePlatform = await platformCtrl.getBySlug(platform);
     const gameCtrl = new Game();
     const responseGames = await gameCtrl.getGamesByPlatformSlug(platform, page);
+
+    console.log(responseGames.data, 'DATAAAAAAAAAAAAA')
 
   return (
     <Layout relative>

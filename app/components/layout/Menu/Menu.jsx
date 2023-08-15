@@ -7,14 +7,16 @@ import styles from './Menu.module.scss'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { ENV } from '../../../utils'
+import { useRouter } from 'next/navigation'
 
 const platformCtrl = new Platform
 
 export default function Menu({isOpenSearch}) {
 
     const [platforms, setPlatforms] = useState(null)
-    const [showSearch, setShowSearch] = useState(false)
-
+    const [showSearch, setShowSearch] = useState(isOpenSearch)
+    const [searchText, setSearchText] = useState(" ")
+    const router = useRouter()
     const openCloseSearch = () => setShowSearch((prevState) => !prevState)
 
     useEffect(() => {
@@ -27,7 +29,16 @@ export default function Menu({isOpenSearch}) {
             }
         })()
     }, [])
+
+    useEffect(() => {
+        setSearchText(router.replace || '')
+    }, [])
     
+    const onSearch = (text) => {
+        setSearchText(text)
+        router.replace(`/search?s=${text}`)
+    }   
+
     return (
         <div className={styles.platforms}>
             {map(platforms, (platform) => (
@@ -42,7 +53,14 @@ export default function Menu({isOpenSearch}) {
             </button>
 
             <div className={classNames(styles.inputContainer, {[styles.active]: showSearch })}>
-                <input id='search-game' placeholder='Busca tu juego' className={styles.input} focus={true} />
+                <Input 
+                    id='search-games' 
+                    placeholder='Busca tu juego' 
+                    className={styles.input} 
+                    focus={true}
+                    value={searchText}
+                    onChange={(_, data)=> onSearch(data.value)}
+                />
                 <Icon name='close' className={styles.closeInput} onClick={openCloseSearch} />
             </div>
         </div>
