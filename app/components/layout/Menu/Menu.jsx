@@ -15,7 +15,7 @@ export default function Menu({isOpenSearch}) {
 
     const [platforms, setPlatforms] = useState(null)
     const [showSearch, setShowSearch] = useState(isOpenSearch)
-    const [searchText, setSearchText] = useState(" ")
+    const [searchText, setSearchText] = useState("")
     const router = useRouter()
     const openCloseSearch = () => setShowSearch((prevState) => !prevState)
 
