@@ -1,29 +1,30 @@
-import  {Layout } from '../layout/layout'
+import { Layout } from '../layout/layout'
 import { Game } from '../api'
 import { Games } from '../components/Game/Game'
 import { ENV } from '../utils';
+import { Separator } from '../components/Shared';
 
 export default async function gamePage(props) {
-
-    // console.log(props, 'PROPSSSGAME') //{ params: { games: 'forspoken' }, searchParams: {} } PROPSSSGAME
-
+  
     const { params: {games} } = props;
 
     const gameCtrl = new Game();
     const responseGames = await gameCtrl.getGameByslug(games);
     const wallpaper = responseGames.attributes.wallpaper.data.attributes.url
-
     const HeaderWallpaper= `${ENV.SERVER_HOST}${wallpaper}`
+    const gameId = responseGames.id
+    const gameAtribbutes= responseGames.attributes
 
-    // console.log(responseGames.attributes.platform.data.attributes.icon, 'ResponseGAME')
-    // console.log(HeaderWallpaper, "wallpaper")
-
+    console.log(gameAtribbutes.cover.data.attributes.url, 'HOLA')
 
   return (
     <>
     <Layout>
         <div>
           <Games.Wallpaper image={HeaderWallpaper} />
+          <Games.Panel gameId={gameId} game={gameAtribbutes} />
+
+          <Separator height={50}/> 
         </div>
     </Layout>
     </>
