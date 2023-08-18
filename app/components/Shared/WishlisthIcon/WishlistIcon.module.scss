@@ -1,0 +1,10 @@
+@import '~/app/scss/index.scss';
+
+.wishlisticon{
+    color: $primary;
+
+    &:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
+}
