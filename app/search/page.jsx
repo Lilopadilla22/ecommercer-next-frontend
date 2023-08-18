@@ -10,6 +10,7 @@ export default async function SearchPage(props) {
   
   const gameCtrl = new Game
   const responseGames = await gameCtrl.searchGames(s, page); 
+  const hasGames = responseGames.data.length 
 
   return (
     <>
@@ -18,20 +19,20 @@ export default async function SearchPage(props) {
         <div style={{paddingLeft: 40, paddingRight: 40}}>
           <Separator height={50}/>
           <h2>Buscando: {s}</h2>
-        {
-            responseGames.data 
-            ? 
-            (
-              <>
-                <GridGames games={responseGames.data}/>
-                <Separator height={30}/>
-                <Pagination  currentPage={responseGames.meta.pagination.page} totalPages={responseGames.meta.pagination.pageCount}/>
-              </>
-            ) 
-            : 
-            (
-              <NoResult text ='No se han encontrado resultado'/>
-            )
+          {
+            hasGames > 0
+              ? 
+                (
+                  <>
+                    <GridGames games={responseGames.data}/>
+                    <Separator height={30}/>
+                    <Pagination  currentPage={responseGames.meta.pagination.page} totalPages={responseGames.meta.pagination.pageCount}/>
+                  </>
+                ) 
+              : 
+                (
+                  <NoResult text ='No se han encontrado resultado'/>
+                )
           } 
           <Separator height={100}/>
         </div>

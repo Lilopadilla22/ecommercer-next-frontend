@@ -11,7 +11,7 @@ export default async function PlatformPage(props) {
     const gameCtrl = new Game();
     const responseGames = await gameCtrl.getGamesByPlatformSlug(platform, page);
 
-    console.log(responseGames.data, 'DATAAAAAAAAAAAAA')
+    const hasGames = responseGames.data.length 
 
   return (
     <Layout relative>
@@ -19,7 +19,7 @@ export default async function PlatformPage(props) {
         <Separator height={50}/>
           <h2>{responsePlatform.attributes.title}</h2>
           {
-            responseGames.data ? (
+            hasGames > 0 ? (
               <>
                 <GridGames games={responseGames.data}/>
                 <Separator height={30}/>
