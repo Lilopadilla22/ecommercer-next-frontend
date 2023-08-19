@@ -1,7 +1,9 @@
 import { AuthProvider } from './context/AuthContext';
 import 'semantic-ui-css/semantic.min.css'
 import { Inter } from 'next/font/google'
-import "@/app/scss/global.scss";
+import "./scss/global.scss";
+
+// @/app/scss/global.scss
 
 const inter = Inter({ subsets: ['latin'] })
 

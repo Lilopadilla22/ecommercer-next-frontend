@@ -14,9 +14,7 @@ export default async function gamePage(props) {
     const HeaderWallpaper= `${ENV.SERVER_HOST}${wallpaper}`
     const gameId = responseGames.id
     const gameAtribbutes= responseGames.attributes
-
-    console.log(gameAtribbutes.cover.data.attributes.url, 'HOLA')
-
+    const screenShots = responseGames.attributes.screenshots.data
   return (
     <>
     <Layout>
@@ -25,6 +23,8 @@ export default async function gamePage(props) {
           <Games.Panel gameId={gameId} game={gameAtribbutes} />
           <Separator height={50}/> 
           <Games.Info game={gameAtribbutes} />
+          <Separator height={30}/> 
+          <Games.Media video={gameAtribbutes.video} screen={screenShots} />
           <Separator height={50}/> 
         </div>
     </Layout>
