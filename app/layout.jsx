@@ -2,6 +2,8 @@ import { AuthProvider } from './context/AuthContext';
 import 'semantic-ui-css/semantic.min.css'
 import { Inter } from 'next/font/google'
 import "./scss/global.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // @/app/scss/global.scss
 
