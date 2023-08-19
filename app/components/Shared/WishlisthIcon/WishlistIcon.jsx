@@ -11,7 +11,6 @@ const wishlistCtrl = new Wishlist()
 export function WishlistIcon({gameId, className}) {
 
   const {user} = useAuth()
-
   const [hasWishlist, setHasWishlist] = useState(null)
 
   useEffect(() => {
@@ -27,7 +26,10 @@ export function WishlistIcon({gameId, className}) {
     })()
   }, [gameId])
 
-  const addWishliist = () => {console.log('aawishlist')}
+  const addWishliist = async () => {
+    const response = await wishlistCtrl.add(user.id, gameId)
+    setHasWishlist(response)
+  }
   const deleteWishliist = () => {console.log('deletewishlist')}
   
   if(hasWishlist === null) return null;
