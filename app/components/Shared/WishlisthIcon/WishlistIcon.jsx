@@ -8,7 +8,7 @@ import { useAuth } from '../../../hook/useAuth'
 
 const wishlistCtrl = new Wishlist()
 
-export function WishlistIcon({gameId, className}) {
+export function WishlistIcon({gameId, className, removeCallback}) {
 
   const {user} = useAuth()
   const [hasWishlist, setHasWishlist] = useState(null)
@@ -30,10 +30,14 @@ export function WishlistIcon({gameId, className}) {
     const response = await wishlistCtrl.add(user.id, gameId)
     setHasWishlist(response)
   }
+
   const deleteWishliist = async () => {
     try {
       await wishlistCtrl.delete(hasWishlist.id)
       setHasWishlist(false)
+      
+      if(removeCallback) {removeCallback()}
+      
     } catch (error) {
       console.error(error)
     }

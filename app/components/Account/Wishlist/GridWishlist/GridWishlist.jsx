@@ -2,10 +2,10 @@ import Link from 'next/link'
 import styles from './GridWishlist.module.scss'
 import { map } from 'lodash'
 import { ENV, fn } from '../../../../utils'
-import { Label } from '../../../Shared'
+import { Label, WishlistIcon } from '../../../Shared'
 
 
-export function GridWishlist({wishList}) {
+export function GridWishlist({wishList, onReload}) {
 
   return (
     <div className={styles.gridGames}>
@@ -32,6 +32,8 @@ export function GridWishlist({wishList}) {
                         </span>
                     </div>
                 </Link>
+
+                <WishlistIcon gameId={game.id} className={styles.wishlistIcon} removeCallback={onReload}/>
             </div>
         )
       })}

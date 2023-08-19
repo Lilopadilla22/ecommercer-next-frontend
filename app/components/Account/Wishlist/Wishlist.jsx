@@ -10,7 +10,9 @@ const wishlistCtrl = new WishlistCtrl()
 export function Wishlist() {
 
     const [wishList, setWishList] = useState(null)
+    const [reload, setReload] = useState(false)
     const { user } = useAuth()
+    const onReload = () => setReload((prevState) => !prevState)
 
     useEffect(() => {
       (async () => {
@@ -21,7 +23,7 @@ export function Wishlist() {
             console.error(error)
         }
       })()
-    }, [])  
+    }, [reload])  
     
-  return size(wishList) === 0 ? (<NoResult text='No tienes favoritos'/>) : (<GridWishlist wishList={wishList}/>)
+  return size(wishList) === 0 ? (<NoResult text='No tienes favoritos'/>) : (<GridWishlist wishList={wishList} onReload={onReload}/>)
 }
