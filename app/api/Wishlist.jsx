@@ -54,5 +54,22 @@ export class Wishlist{
         }
     }
 
+    async delete (id) {
+        try {
+            const url = `${ENV.API_URL}/${ENV.ENDPOINTS.WISHLIST}/${id}`
+            const params = { method: "DELETE" }
+
+            const response = await authFetch(url, params)
+            const result = await response.json()
+
+           if(response.status !== 200) throw result
+
+           return result.data
+            
+        } catch (error) {
+            throw error
+        }
+    }
+
 
 }

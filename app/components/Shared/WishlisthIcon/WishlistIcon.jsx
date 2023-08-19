@@ -30,7 +30,14 @@ export function WishlistIcon({gameId, className}) {
     const response = await wishlistCtrl.add(user.id, gameId)
     setHasWishlist(response)
   }
-  const deleteWishliist = () => {console.log('deletewishlist')}
+  const deleteWishliist = async () => {
+    try {
+      await wishlistCtrl.delete(hasWishlist.id)
+      setHasWishlist(false)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
   if(hasWishlist === null) return null;
 
