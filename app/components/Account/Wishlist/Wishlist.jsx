@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Wishlist as WishlistCtrl } from '../../../api'
 import { useAuth } from '../../../hook'
+import { size } from 'lodash'
+import { GridWishlist } from './GridWishlist'
+import { NoResult } from '../../Shared'
 
 const wishlistCtrl = new WishlistCtrl()
 
@@ -13,16 +16,12 @@ export function Wishlist() {
       (async () => {
         try {
             const response = await wishlistCtrl.getAll(user.id)
-            console.log(response, 'REsPONSEEEEEEEEEEEEEE')
+            setWishList(response)
         } catch (error) {
             console.error(error)
         }
       })()
     }, [])  
     
-  return (
-    <div>
-      Soy la Wishlist
-    </div>
-  )
+  return size(wishList) === 0 ? (<NoResult text='No tienes favoritos'/>) : (<GridWishlist wishList={wishList}/>)
 }
