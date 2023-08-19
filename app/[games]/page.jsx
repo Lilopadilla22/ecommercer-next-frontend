@@ -23,7 +23,8 @@ export default async function gamePage(props) {
         <div>
           <Games.Wallpaper image={HeaderWallpaper} />
           <Games.Panel gameId={gameId} game={gameAtribbutes} />
-
+          <Separator height={50}/> 
+          <Games.Info game={gameAtribbutes} />
           <Separator height={50}/> 
         </div>
     </Layout>
