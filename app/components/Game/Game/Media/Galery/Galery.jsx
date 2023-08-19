@@ -5,6 +5,7 @@ import { map } from 'lodash'
 import { ENV } from '../../../../../utils'
 import { FullModal } from '../../../../Shared'
 import { useState } from 'react'
+import Slider from 'react-slick'
 
 export function Galery({screenshots}) {
 
@@ -13,6 +14,19 @@ export function Galery({screenshots}) {
     const screenShotsClone = [...screenshots]
     const principalImage = screenShotsClone.shift()
     const onOpenClose = () => setShow((prevState) => !prevState)
+
+    const settings = {
+        dots: true,
+        dotsClass: styles.dots,
+        infinite: true,
+        sliderToshow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        customPaging: function( index) {
+            return <Image src={`${ENV.SERVER_HOST}${screenshots[index].attributes.url}`}/> 
+        }
+
+    }
 
     return (
         <>
@@ -30,7 +44,15 @@ export function Galery({screenshots}) {
             </div>
 
             <FullModal show={show} onClose={onOpenClose}>
-                <p>HOLA</p>
+                <div className={styles.carruselContainer}>
+                    <Slider {...settings}>
+                        {map(screenshots, (screenshot)=> (
+                            <div key={screenshot.id}>
+                                <Image src={`${ENV.SERVER_HOST}${screenshot.attributes.url}`} />
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             </FullModal>      
         </>
     )
