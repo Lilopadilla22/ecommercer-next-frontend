@@ -3,14 +3,16 @@ import { Image } from 'semantic-ui-react'
 import styles from './Galery.module.scss'
 import { map } from 'lodash'
 import { ENV } from '../../../../../utils'
+import { FullModal } from '../../../../Shared'
+import { useState } from 'react'
 
 export function Galery({screenshots}) {
 
+    const [show, setShow] = useState(false)
+
     const screenShotsClone = [...screenshots]
     const principalImage = screenShotsClone.shift()
-    const onOpenClose = () => {
-        console.log('abrir galeria')
-    }
+    const onOpenClose = () => setShow((prevState) => !prevState)
 
     return (
         <>
@@ -25,7 +27,11 @@ export function Galery({screenshots}) {
                         </div>
                     ))}
                 </div>
-            </div>      
+            </div>
+
+            <FullModal show={show} onClose={onOpenClose}>
+                <p>HOLA</p>
+            </FullModal>      
         </>
     )
 }
