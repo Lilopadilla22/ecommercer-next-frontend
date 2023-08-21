@@ -3,6 +3,7 @@ import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { useCart } from '../hook'
 import { Game } from '../api'
+import { Cart } from '../components/Cart'
 
 const gameCtrl = new Game
 
@@ -22,9 +23,7 @@ export default function page() {
         for await ( const item of cart) {
           const response = await gameCtrl.getGameById(item.id)
           data.push({...response.data, quantity: item.quantity})
-          console.log(response, 'QUE ESESTO🤷‍♀️')
         }
-        console.log(data, 'DATAAAAAA')
         setGames(data)
       } catch (error) {
         console.error(error)
@@ -35,9 +34,9 @@ export default function page() {
 
   return (
     <>
-      { currentStep === 1 && <p>StepOne</p> }
-      { currentStep === 2 && <p>StepTwo</p> }
-      { currentStep === 3 && <p>stepThree</p> }
+      { currentStep === 1 && <Cart.StepOne games={games} /> }
+      { currentStep === 2 && <Cart.StepTwo /> }
+      { currentStep === 3 && <Cart.StepThree /> }
     </>
   )
   
