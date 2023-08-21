@@ -53,4 +53,12 @@ export class Cart {
 
 
     }
+
+    delete(gameId) {
+        const games = this.getAll()
+
+        const updateGames = games.filter((game) => game.id !== gameId)
+
+        localStorage.setItem(ENV.CART, JSON.stringify(updateGames))
+    }
 }

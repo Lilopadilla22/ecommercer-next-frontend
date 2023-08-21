@@ -17,17 +17,21 @@ export function CartProvider({children}) {
        setCart(response)
     }, [])
 
-    const addCart = (gameId) => {
-        cartCtrl.add(gameId)
-        refreshCart()
-    }
-
     const refreshCart = () => {
         setTotal(cartCtrl.count())
         setCart(cartCtrl.getAll())
     }
 
-    const deleteItem = () => {}
+    const addCart = (gameId) => {
+        cartCtrl.add(gameId)
+        refreshCart()
+    }
+
+    const deleteItem = (gameId) => {
+        cartCtrl.delete(gameId)
+        refreshCart()
+    }
+    
     const deleteAllItems = () => {}
 
     const changeQuantityItems = (gameId, quantity) => {
@@ -39,7 +43,7 @@ export function CartProvider({children}) {
         cart: cart,
         addCart: addCart,
         total: total,
-        deleteItem: () => {},
+        deleteItem: deleteItem,
         deleteAllItems: () => {},
         changeQuantityItems: changeQuantityItems
     }

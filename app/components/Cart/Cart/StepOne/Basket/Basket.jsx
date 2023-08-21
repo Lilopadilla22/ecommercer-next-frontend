@@ -15,7 +15,7 @@ export function Basket({games}) {
   //   {key: 5, text: "5", value: 5}
   // ]
 
-  const { changeQuantityItems } = useCart()
+  const { changeQuantityItems, deleteItem } = useCart()
 
   const options = Array.from({ length: 5}, (_, index) => {
     const number = index + 1
@@ -24,7 +24,7 @@ export function Basket({games}) {
 
   return (
     <div className={styles.basket}>
-      <h2>Cesta</h2>
+      <h2>Tu carrito</h2>
       <div className={styles.block}>
         {map(games, (game)=> (
           <div key={game.id} className={styles.product}>
@@ -35,7 +35,11 @@ export function Basket({games}) {
                   <p>{game.attributes.title}</p>
                   <p>{game.attributes.platform.data.attributes.title}</p>
                 </div>
-                <Icon name='trash alternate online' link/>
+                <Icon 
+                  name='trash alternate online' 
+                  link 
+                  onClick={() => deleteItem(game.id)} 
+                />
               </div>
               <div className={styles.quantity}>
                 <Dropdown 
