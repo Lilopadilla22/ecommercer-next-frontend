@@ -1,20 +1,19 @@
 'use client'
 import { useSearchParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCart } from '../hook'
 import { Game } from '../api'
 import { Cart } from '../components/Cart'
 
 const gameCtrl = new Game
 
-export default function page() {
+export default function page(props) {
 
+  const {searchParams: { step = 1}} = props
   const [games, setGames] = useState(null)
-
   const{ cart } = useCart()
-  const step = useSearchParams().get('step')
+  // const stepNumber = useSearchParams().get('step')
   const currentStep = Number(step)
-
 
   useEffect(() => {
     (async() => {
@@ -31,11 +30,10 @@ export default function page() {
     })()
   }, [cart])
   
-
   return (
     <>
       { currentStep === 1 && <Cart.StepOne games={games} /> }
-      { currentStep === 2 && <Cart.StepTwo /> }
+      { currentStep === 2 && <Cart.StepTwo games={games} /> }
       { currentStep === 3 && <Cart.StepThree /> }
     </>
   )
