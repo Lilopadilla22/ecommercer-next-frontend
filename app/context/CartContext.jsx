@@ -29,7 +29,11 @@ export function CartProvider({children}) {
 
     const deleteItem = () => {}
     const deleteAllItems = () => {}
-    const changeQuantityItems = () => {}    
+
+    const changeQuantityItems = (gameId, quantity) => {
+        cartCtrl.changueQuantity(gameId, quantity)
+        refreshCart()
+    }    
 
     const data = {
         cart: cart,
@@ -37,7 +41,7 @@ export function CartProvider({children}) {
         total: total,
         deleteItem: () => {},
         deleteAllItems: () => {},
-        changeQuantityItems: () => {}
+        changeQuantityItems: changeQuantityItems
     }
 
     return <CartContext.Provider value={data}>{children}</CartContext.Provider>

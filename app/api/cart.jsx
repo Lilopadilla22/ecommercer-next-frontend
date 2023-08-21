@@ -40,4 +40,17 @@ export class Cart {
 
         return count
     }
+
+    changueQuantity(gameId, quantity) {
+        
+        const games = this.getAll()
+
+        const objIndex = games.findIndex((game) => game.id === gameId)
+
+        games[objIndex].quantity = quantity
+
+        localStorage.setItem(ENV.CART, JSON.stringify(games))
+
+
+    }
 }
