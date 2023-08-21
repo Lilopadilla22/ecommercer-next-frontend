@@ -9,9 +9,9 @@ export default function layout({children}) {
    <>
     <HeaderCart/>
     <p>Header Cart</p>
-    <Separator height={30}/>
+    <Separator height={100}/>
     <Container>{children}</Container>
-    <Separator height={30}/>
+    <Separator height={100}/>
     <Footer/>
    </>
   )
