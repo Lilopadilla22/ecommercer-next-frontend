@@ -1,5 +1,5 @@
 import { ENV, authFetch } from '../utils'
-import { size } from 'lodash'
+import { forEach } from 'lodash'
 
 export class Cart {
 
@@ -18,7 +18,7 @@ export class Cart {
         localStorage.setItem( ENV.CART, JSON.stringify(games))
     }
 
-    getAll () {
+    getAll() {
         const response = localStorage.getItem(ENV.CART)
 
         if(!response) {
@@ -27,5 +27,17 @@ export class Cart {
            return JSON.parse(response)
         }
         return response
+    }
+
+    count() {
+        const response = this.getAll()
+
+        let count = 0
+
+        forEach(response, (item) => {
+            count += item.quantity
+        })
+
+        return count
     }
 }
