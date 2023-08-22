@@ -2,10 +2,11 @@
 import { useState } from 'react'
 import { Separator } from '../../../Shared'
 import { Addresses } from './Addresses'
+import { Payment } from './Payment'
+import { Resumen } from './Resumen'
 import { loadStripe} from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import { ENV } from '../../../../utils'
-import { Payment } from './Payment'
 import styles from './StepTwo.module.scss'
 
 
@@ -25,7 +26,7 @@ export function StepTwo({games}) {
         </div>
 
         <div className={styles.right}>
-          <p>Resumen</p>
+          <Resumen addressSelected={addressSelected} games={games} />
         </div>
       </div>
     </Elements>
