@@ -14,5 +14,6 @@ export const ENV = {
         WISHLIST: 'wishlists'
     },
     TOKEN: 'token',
-    CART: 'cart'
+    CART: 'cart',
+    STRIPE_TOKEN: 'pk_test_51NahGGDJxRJ8VB5uhmDYlsyQ5qYK85iuP5nUf9hXDJpBm3WO1CPdAK8xfaTgjEgpCQs4lzgUQHf6XgXwfeUrcChk006lfIQ4Dq'
 }
