@@ -32,7 +32,10 @@ export function CartProvider({children}) {
         refreshCart()
     }
     
-    const deleteAllItems = () => {}
+    const deleteAllItems = () => {
+        cartCtrl.deleteAll()
+        refreshCart()
+    }
 
     const changeQuantityItems = (gameId, quantity) => {
         cartCtrl.changueQuantity(gameId, quantity)
@@ -44,7 +47,7 @@ export function CartProvider({children}) {
         addCart: addCart,
         total: total,
         deleteItem: deleteItem,
-        deleteAllItems: () => {},
+        deleteAllItems: deleteAllItems,
         changeQuantityItems: changeQuantityItems
     }
 
