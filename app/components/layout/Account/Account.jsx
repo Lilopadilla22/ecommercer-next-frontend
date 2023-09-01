@@ -17,7 +17,7 @@ export default function Account() {
     const goToAccount = () => router.push('/account')
     const goToCart = () => {
         if(!user) goToLogin()
-        else router.push('/cart')
+        else router.push('/cart?step=1')
     }
 
   return (
